@@ -39,6 +39,5 @@
   </script>
   
   <style scoped>
-  /* Optional custom styling */
   </style>
   
