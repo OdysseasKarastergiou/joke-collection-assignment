@@ -11,6 +11,8 @@
     <div v-if="loading">Loading...</div>
     <div v-if="error">{{ error }}</div>
     <JokeCard v-if="joke" :joke="joke" />
+    <JokeButton v-if="joke" @click="saveJoke(joke)" class="btn mt-4">Save to Collection</JokeButton>
+
   </div>
 </template>
 
@@ -20,6 +22,14 @@ import JokeButton from './JokeButton.vue';
 import JokeCard from './JokeCard.vue';
 
 const { joke, loading, error, fetchJoke } = useJokes();
+
+function saveJoke(joke) {
+  let collection = JSON.parse(localStorage.getItem('jokes') || '[]');
+  if (!collection.find(j => j.id === joke.id)) {
+    collection.push(joke);
+    localStorage.setItem('jokes', JSON.stringify(collection));
+  }
+}
 
 
 </script>
