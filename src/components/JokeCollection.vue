@@ -1,6 +1,12 @@
 <template>
   <div class="p-6">
     <h2 class="text-xl mb-4">Your Joke Collection in local storage</h2>
+    <div class="flex flex-col p-4 border border-gray-300 rounded-xl shadow-sm mb-6 bg-black">
+      <span class="text-xl font-bold mb-2">Collection statistics</span>
+      <span class="text-sm">Jokes Collected: {{ jokesCount }} </span>
+      <span class="text-sm">Average Rating Given: {{ averageRating }}</span>
+    </div>
+
     <div class="flex justify-between">
       <div class="mb-4">
       <label for="rating-filter" class="mr-2">Filter by rating:</label>
@@ -27,7 +33,7 @@
  
       </div>
     </div>
-    <div v-if="filteredJokes.length === 0">No jokes saved yet.</div>
+    <div v-if="jokesCount === 0">No jokes saved yet.</div>
     <div v-for="joke in filteredJokes" :key="joke.id" class="mb-4">
       <JokeCard :joke="joke" />
       <JokeButton color="red" @click="removeJoke(joke.id)" class="mt-4">Remove</JokeButton>
@@ -64,6 +70,17 @@ const filteredJokes = computed(() => {
   }
 
   return result;
+});
+
+const jokesCount = computed(() => filteredJokes.value.length);
+
+const averageRating = computed(() => {
+  if (filteredJokes.value.length === 0) return '0';
+
+  const total = filteredJokes.value.reduce((sum, joke) => sum + (joke.rating || 0), 0);
+  const avg = total / filteredJokes.value.length;
+
+  return avg.toFixed(1);
 });
 
 function removeJoke(id) {
