@@ -1,6 +1,6 @@
 <template>
   <div class="p-6">
-    <h2 class="text-xl mb-4">Your Joke Collection in local storage</h2>
+    <h2 class="text-xl mb-4">Your Joke Collection</h2>
     <div class="flex flex-col p-4 border border-gray-300 rounded-xl shadow-sm mb-6 bg-black">
       <span class="text-xl font-bold mb-2">Collection statistics</span>
       <span class="text-sm">Jokes Collected: {{ jokesCount }} </span>
@@ -43,7 +43,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import JokeCard from './JokeCard.vue';
-import JokeButton from './JokeButton.vue';
+import JokeButton from './common/JokeButton.vue';
 import SearchBar from './common/SearchBar.vue';
 
 const jokes = ref([]);
