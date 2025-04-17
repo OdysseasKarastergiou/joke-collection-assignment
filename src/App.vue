@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <nav class="bg-transparent text-sm flex justify-center p-4 gap-4">
+    <nav class="bg-transparent text-sm flex justify-center p-4 gap-8">
       <RouterLink to="/" class="nav-link">Home</RouterLink>
       <RouterLink to="/collection" class="nav-link">My Collection</RouterLink>
     </nav>
@@ -29,14 +29,28 @@
 }
 
 .nav-link {
-  color: #1e3a8a;
+  color: white;
   font-weight: 500;
   transition: all 0.2s ease;
+  position: relative;
 }
 
-.router-link-active {
-  font-weight: 700;
-  transform: scale(1.1);
-  color: #2563eb;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 50%;
+}
+
+.router-link-active::after {
+  width: 100%;
 }
 </style>
