@@ -30,10 +30,16 @@
       class="btn mt-4"
       >Save to Collection</JokeButton
     >
-    <div v-if="saveMessage" class="mt-4 border-blue-400 p-3 rounded bg-blue-400 text-white text-sm">
+    <div
+      v-if="saveMessage"
+      class="mt-4 border-blue-400 p-3 rounded bg-blue-400 text-white text-sm"
+    >
       {{ saveMessage }}
     </div>
-    <div v-if="saveError" class="mt-4 border-red-400 p-3 rounded bg-red-400 text-white text-sm">
+    <div
+      v-if="saveError"
+      class="mt-4 border-red-400 p-3 rounded bg-red-400 text-white text-sm"
+    >
       {{ saveError }}
     </div>
   </div>
@@ -51,10 +57,17 @@ const saveMessage = ref("");
 const saveError = ref("");
 
 function saveJoke(joke) {
+  if (!joke.rating || joke.rating === 0) {
+    saveError.value = "You have to rate a joke before saving it to your collection.";
+    setTimeout(() => (saveError.value = ""), 2000);
+    return;
+  }
+
   try {
     let collection = JSON.parse(localStorage.getItem("jokes") || "[]");
     if (!collection.find((j) => j.id === joke.id)) {
       collection.push(joke);
+      console.log(joke.rating);
       localStorage.setItem("jokes", JSON.stringify(collection));
       saveMessage.value = "Joke has been added to your collection.";
       saveError.value = "";
