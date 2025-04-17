@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div>
@@ -7,11 +6,28 @@
       <RouterLink to="/" class="nav-link">Home</RouterLink>
       <RouterLink to="/collection" class="nav-link">My Collection</RouterLink>
     </nav>
-    <RouterView />
+    <Transition name="scale" mode="out-in">
+      <RouterView />
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.scale-enter-from {
+  transform: scale(0.7);
+  opacity: 0;
+}
+
+.scale-leave-to {
+  transform: scale(1.2);
+  opacity: 0;
+}
+
 .nav-link {
   color: #1e3a8a;
   font-weight: 500;
