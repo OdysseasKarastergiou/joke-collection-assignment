@@ -1,5 +1,12 @@
-# Vue 3 + Vite
+## Getting Started
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a Vue + Vite project.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Project Overview
+This is a frontend developer assignment focused on creating a joke displaying and collecting app. It was developed using Vue 3 and styled with TailwindCSS.
+
+1. Install dependencies  run 'npm i'
+2. Run the server with 'npm run dev'
+3. The server will run at : http://localhost:5173/joke-collection-assignment/
+
+App is also uploaded to github pages and is accessible here : 'https://odysseaskarastergiou.github.io/joke-collection-assignment/'
