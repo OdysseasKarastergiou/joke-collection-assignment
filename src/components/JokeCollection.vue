@@ -8,7 +8,7 @@
       <span class="text-sm">Jokes Collected: {{ jokesCount }} </span>
       <span class="text-sm">Average Rating Given: {{ averageRating }}</span>
     </div>
-    <div class="flex justify-between flex-col mb-2 sm:flex-row">
+    <div class="flex justify-between flex-col mb-2 gap-2 sm:flex-row">
       <div class="mb-4">
         <label for="rating-filter" class="mr-2">Filter by rating:</label>
         <font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />
@@ -39,12 +39,14 @@
     </div>
     <SearchBar v-model="searchQuery" />
     <div v-if="jokesCount === 0">No jokes saved yet.</div>
-    <div v-for="joke in filteredJokes" :key="joke.id" class="mb-4">
-      <JokeCard :joke="joke" />
-      <JokeButton color="red" @click="removeJoke(joke.id)" class="mt-4"
-        >Remove</JokeButton
-      >
-    </div>
+    <TransitionGroup name="fade" tag="div">
+      <div v-for="joke in filteredJokes" :key="joke.id" class="mb-4">
+        <JokeCard :joke="joke" />
+        <JokeButton color="red" @click="removeJoke(joke.id)" class="mt-4">
+          Remove
+        </JokeButton>
+      </div>
+    </TransitionGroup>
   </div>
 </template>
 
@@ -111,3 +113,16 @@ function SortBy(type) {
   sortBy.value = type;
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+</style>
