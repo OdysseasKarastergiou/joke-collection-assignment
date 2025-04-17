@@ -9,10 +9,10 @@ export function useJokes() {
     loading.value = true;
     error.value = null;
 
-    let url =
-      type === 'programming'
-        ? 'https://official-joke-api.appspot.com/jokes/programming/random'
-        : 'https://official-joke-api.appspot.com/random_joke';
+    const url =
+    type === 'programming'
+      ? import.meta.env.VITE_PROGRAMMING_JOKE_API
+      : import.meta.env.VITE_RANDOM_JOKE_API;
 
     try {
       const res = await fetch(url);
