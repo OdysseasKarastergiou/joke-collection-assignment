@@ -2,7 +2,7 @@
   <div class="home">
     <span class="home__title text-4xl">Joke Collection App</span>
     <div class="home__buttons flex flex-col my-8">
-      <div class="mt-4 flex gap-4">
+      <div class="text-sm sm:text-base mt-4 flex gap-4">
         <JokeButton
           :disabled="loading"
           :color="loading ? 'gray' : 'green'"

@@ -8,7 +8,7 @@
       <span class="text-sm">Jokes Collected: {{ jokesCount }} </span>
       <span class="text-sm">Average Rating Given: {{ averageRating }}</span>
     </div>
-    <div class="flex justify-between">
+    <div class="flex justify-between flex-col mb-2 sm:flex-row">
       <div class="mb-4">
         <label for="rating-filter" class="mr-2">Filter by rating:</label>
         <font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />
