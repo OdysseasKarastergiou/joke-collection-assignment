@@ -29,7 +29,6 @@
 }
 
 .nav-link {
-  color: white;
   font-weight: 500;
   transition: all 0.2s ease;
   position: relative;
