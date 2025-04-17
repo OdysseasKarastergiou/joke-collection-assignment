@@ -27,6 +27,9 @@
       </span>
     </transition>
     <StarRating class="mt-4" v-model="rating" />
+    <transition name="fade" mode="out-in">
+      <span v-if="rating != 0" class="text-black mt-2">{{ rateMessage }}</span>
+    </transition>
   </div>
 </template>
 
@@ -38,18 +41,21 @@ import StarRating from "./common/StarRating.vue";
 const { joke } = defineProps(["joke"]);
 const revealed = ref(false);
 const rating = ref(joke.rating || 0);
+const rateMessage = ref("");
 
 watch(
   () => joke,
   () => {
     revealed.value = false;
     rating.value = joke.rating || 0;
+    rateMessage.value = "";
   },
   { immediate: true }
 );
 
 watch(rating, (newRating) => {
   joke.rating = newRating;
+  rateMessage.value = `You rated with ${newRating} star(s)`;
 });
 </script>
 

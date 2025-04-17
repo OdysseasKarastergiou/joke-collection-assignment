@@ -16,7 +16,6 @@
         </span>
       </span>
     </div>
-    <span class="text-black mt-2">{{ rateMessage }}</span>
   </div>
 </template>
 
@@ -36,15 +35,12 @@ const emit = defineEmits(["update:modelValue"]);
 
 const hover = ref(0);
 
-const rateMessage = ref("");
-
 const stars = computed(() =>
   Array.from({ length: props.maxStars }, (_, i) => i + 1)
 );
 
 const rate = (value) => {
   emit("update:modelValue", value);
-  rateMessage.value = `You rated with ${value} star(s)`;
 };
 </script>
 
